@@ -1,0 +1,2 @@
+#Options -Indexes ile app klasörüne girişi yasaklıyoruz. daha güvenli hale getiriyoruz.
+Options -Indexes

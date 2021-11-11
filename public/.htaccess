@@ -1,0 +1,7 @@
+#RewriteEngine on ile .htaccess dosyasının işlevini başlatıyoruz.
+RewriteEngine on
+#RewriteCond %{REQUEST_FİLENAME} !-f ile tarayıcıda dosya veya !-d ile tarayıcıda dizin yok ise aşağıdaki yazma kurallarına betimliyor.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php?sayfa=$1 [QSA, L] ile yönlendirmeyi de gelen get değerleri ile index'e aktarıyoruz.
+RewriteRule ^(.*)$ index.php?sayfa=$1 [QSA,L]

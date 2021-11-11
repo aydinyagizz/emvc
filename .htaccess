@@ -1,0 +1,6 @@
+#RewriteEngine on ile .htaccess dosyasının işlevini başlatıyoruz.
+RewriteEngine on
+#RewriteRule ^$ public/ [L] ile public klasörünün içerisine yönlendirme yapıyoruz.
+RewriteRule ^$ public/ [L]
+#RewriteRule (.*) public/$1 [L] ile ne veri girilirse girilsin $1 ile get değerlerini de gönderiyoruz.
+RewriteRule (.*) public/$1 [L]
