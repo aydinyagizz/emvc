@@ -24,6 +24,7 @@
                     <?php
                     foreach ($data['admins'] as $admins) :
                         ?>
+
                         <tr>
                             <td><?= $admins['admins_namesurname']; ?></td>
                             <td><?= $admins['admins_username']; ?></td>
