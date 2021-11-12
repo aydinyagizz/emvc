@@ -69,4 +69,37 @@ class nedminModel extends mainModel
         return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function adminsSortable()
+    {
+        $sql = $this->db->orderUpdate("admins", $_POST['item'], "admins_must", "admins_id");
+        echo $sql['status'];
+    }
+
+    public function adminsUpdate($admins_id)
+    {
+        $sql = $this->db->wread("admins", "admins_id", $admins_id);
+        return $sql->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function adminsUpdateOp()
+    {
+        $sql = $this->db->update("admins", $_POST,
+            [
+                "form_name" => "admins_update",
+                "columns" => "admins_id",
+                "dir" => "admins",
+                "file_name" => "admins_file",
+                "file_delete" => "delete_file",
+                "pass" => "admins_pass"
+            ]);
+
+        return $sql;
+    }
+
+    public function adminsDelete($admins_id)
+    {
+        $sql = $this->db->delete("admins", "admins_id", $admins_id);
+        return $sql;
+    }
+
 }

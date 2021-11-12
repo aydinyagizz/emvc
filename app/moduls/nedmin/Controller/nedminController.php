@@ -79,4 +79,37 @@ class nedminController extends mainController
         $data['admins'] = $adminsModel->admins();
         $this->callLayout("backend", "main", "nedmin", "admins", $data);
     }
+
+    public function adminsSortable()
+    {
+        $adminsSortableModel = new nedminModel();
+        $adminsSortableModel->adminsSortable();
+    }
+
+    public function adminsUpdate($admins_id)
+    {
+        $data = [];
+        $adminsUpdateModel = new nedminModel();
+        $data['adminsUpdate'] = $adminsUpdateModel->adminsUpdate($admins_id);
+        $this->callLayout("backend", "main", "nedmin", "adminsUpdate", $data);
+    }
+
+    public function adminsUpdateOp()
+    {
+        $adminsUpdateOpModel = new nedminModel();
+        $_SESSION['messageManagement'] = $adminsUpdateOpModel->adminsUpdateOp();
+        //bizi buraya yönlendiren sayfaya gitmek için kullandık.
+        header("Location:{$_SERVER['HTTP_REFERER']}");
+        exit();
+    }
+
+    public function adminsDelete($admins_id)
+    {
+        $adminsDeleteModel = new nedminModel();
+        $_SESSION['messageManagement'] = $adminsDeleteModel->adminsDelete($admins_id);
+        //bizi buraya yönlendiren sayfaya gitmek için kullandık.
+        header("Location:{$_SERVER['HTTP_REFERER']}");
+        exit();
+    }
+
 }

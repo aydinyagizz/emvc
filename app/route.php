@@ -27,3 +27,7 @@ App::postAction('/nedmin/settings/update/settingsUpdateOp', '/nedmin/settingsUpd
 
 //ADMİNS
 App::getAction('/nedmin/admins', '/nedmin/admins', true, "backend");
+App::postAction('/nedmin/admins', '/nedmin/adminsSortable', true, "backend");
+App::getAction('/nedmin/admins/update/([0-9a-zA-Z-_]+)', '/nedmin/adminsUpdate/([0-9a-zA-Z-_]+)', true, "backend");
+App::postAction('/nedmin/admins/update/adminsUpdateOp', '/nedmin/adminsUpdateOp', true, "backend");
+App::getAction('/nedmin/admins/delete/([0-9a-zA-Z-_]+)', '/nedmin/adminsDelete/([0-9a-zA-Z-_]+)', true, "backend");

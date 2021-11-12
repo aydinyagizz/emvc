@@ -35,6 +35,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- jQuery 3 -->
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="/bower_components/jquery-ui/jquery-ui.js"></script>
     <!-- Bootstrap 3.3.7 -->
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
@@ -131,7 +133,7 @@ desired effect
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="/nedmin/admins/update/<?= $_SESSION['admins']['admins_id']; ?>" class="btn btn-default btn-flat">Profil Güncelle</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="/nedmin/logout" class="btn btn-default btn-flat">Güvenli Çıkış</a>

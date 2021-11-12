@@ -20,20 +20,22 @@
                     </tr>
                     </thead>
 
-                    <tbody>
-                    <?php
-                    foreach ($data['admins'] as $admins) :
-                        ?>
+                    <tbody id="sortable">
+                        <?php
+                        foreach ($data['admins'] as $admins) :
+                            ?>
 
-                        <tr>
-                            <td><?= $admins['admins_namesurname']; ?></td>
-                            <td><?= $admins['admins_username']; ?></td>
-                            <td width="10"><a href="/nedmin/settings/update/<?= $adminSettings['settings_id']; ?>"
-                                              title="düzenle"><i
-                                            class="fa fa-pencil-square-o"></i></a></td>
-                            <td width="10"><a href="#" title="sil"><i class="fa fa-trash-o"></i></a></td>
-                        </tr>
-                    <?php endforeach; ?>
+                            <tr id="item-<?= $admins['admins_id'] ?>">
+                                <td class="sortable"><i class="fa fa-exchange"></i><?= " ". $admins['admins_namesurname']; ?></td>
+                                <td><?= $admins['admins_username']; ?></td>
+                                <td width="10"><a href="/nedmin/admins/update/<?= $admins['admins_id']; ?>"
+                                                  title="düzenle"><i
+                                                class="fa fa-pencil-square-o"></i></a></td>
+                                <td width="10"><a href="/nedmin/admins/delete/<?= $admins['admins_id']; ?>" title="sil" onclick="return confirm('<?= $admins['admins_namesurname']; ?>'+' kişisini silmek istiyor musunuz?');"><i class="fa fa-trash-o"></i></a></td>
+
+                            </tr>
+                        <?php endforeach; ?>
+
 
                     </tbody>
                 </table>
@@ -46,5 +48,34 @@
     <!-- /.box-body -->
 
 </div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#sortable').sortable({
+            revert: true,
+            handle: ".sortable",
+            stop: function (event, ui) {
+                //tüm form verilerini serialize diyerek ajax ile gönderiyoruz.
+                var data = $(this).sortable('serialize');
+                $.ajax({
+                    type: "POST",
+                    data: data,
+                    url: "/nedmin/admins",
+                    success: function (msg) {
+                        if (msg) {
+                            alertify.success("İşlem Başarılı.");
+                        } else {
+                            alertify.error("İşlem Tamamlanamadı.");
+                        }
+                    }
+                });
+            }
+        });
+        //işlemi sonlandırma
+        $('#sortable').disableSelection();
+    });
+
+</script>
 
 
