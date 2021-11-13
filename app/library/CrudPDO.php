@@ -65,7 +65,7 @@ class CrudPDO
                     $options['dir']
                 );
 
-                if (!$name_y['status']) {
+                if (isset($name_y['status'])) {
                     return ['status' => FALSE, 'error' => $name_y['error']];
                     exit;
                 } else {

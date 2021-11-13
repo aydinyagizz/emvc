@@ -5,3 +5,9 @@ function messageManagement(success, error) {
         alertify.error(error);
     }
 }
+
+$(document).ready(function () {
+    $('#insertFormShow').click(function () {
+        $('#insertForm').fadeToggle();
+    });
+});

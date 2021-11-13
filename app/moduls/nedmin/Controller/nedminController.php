@@ -47,6 +47,8 @@ class nedminController extends mainController
         $this->callView("nedmin", "login", $data);
     }
 
+
+    //SETTİNGS
     public function settings()
     {
         $data = [];
@@ -72,6 +74,8 @@ class nedminController extends mainController
         exit();
     }
 
+
+    //ADMİNS
     public function admins()
     {
         $data = [];
@@ -110,6 +114,151 @@ class nedminController extends mainController
         //bizi buraya yönlendiren sayfaya gitmek için kullandık.
         header("Location:{$_SERVER['HTTP_REFERER']}");
         exit();
+    }
+
+    public function adminsInsertOp()
+    {
+        $adminsInsertOpModel = new nedminModel();
+        $_SESSION['messageManagement'] = $adminsInsertOpModel->adminsInsertOp();
+        //bizi buraya yönlendiren sayfaya gitmek için kullandık.
+        header("Location:{$_SERVER['HTTP_REFERER']}");
+        exit();
+    }
+
+
+    //SLİDERS
+    public function sliders()
+    {
+        $data = [];
+        $slidersModel = new nedminModel();
+        $data['sliders'] = $slidersModel->sliders();
+        $this->callLayout("backend", "main", "nedmin", "sliders", $data);
+    }
+
+    public function slidersInsertOp()
+    {
+        $slidersInsertOpModel = new nedminModel();
+        $_SESSION['messageManagement'] = $slidersInsertOpModel->slidersInsertOp();
+        //bizi buraya yönlendiren sayfaya gitmek için kullandık.
+        header("Location:{$_SERVER['HTTP_REFERER']}");
+        exit();
+    }
+
+    public function slidersDelete($sliders_id)
+    {
+        $slidersDeleteModel = new nedminModel();
+        $_SESSION['messageManagement'] = $slidersDeleteModel->slidersDelete($sliders_id);
+        //bizi buraya yönlendiren sayfaya gitmek için kullandık.
+        header("Location:{$_SERVER['HTTP_REFERER']}");
+        exit();
+    }
+
+    public function slidersSortable()
+    {
+        $slidersSortableModel = new nedminModel();
+        $slidersSortableModel->slidersSortable();
+    }
+
+
+    //BLOGS
+    public function blogs()
+    {
+        $data = [];
+        $blogsModel = new nedminModel();
+        $data['blogs'] = $blogsModel->blogs();
+        $this->callLayout("backend", "main", "nedmin", "blogs", $data);
+    }
+
+    public function blogsInsertOp()
+    {
+        $blogsInsertOpModel = new nedminModel();
+        $_SESSION['messageManagement'] = $blogsInsertOpModel->blogsInsertOp();
+        //bizi buraya yönlendiren sayfaya gitmek için kullandık.
+        header("Location:{$_SERVER['HTTP_REFERER']}");
+        exit();
+    }
+
+    public function blogsUpdate($blogs_id)
+    {
+        $data = [];
+        $blogsUpdateModel = new nedminModel();
+        $data['blogsUpdate'] = $blogsUpdateModel->blogsUpdate($blogs_id);
+        $this->callLayout("backend", "main", "nedmin", "blogsUpdate", $data);
+    }
+
+    public function blogsUpdateOp()
+    {
+        $blogsUpdateOpModel = new nedminModel();
+        $_SESSION['messageManagement'] = $blogsUpdateOpModel->blogsUpdateOp();
+        //bizi buraya yönlendiren sayfaya gitmek için kullandık.
+        header("Location:{$_SERVER['HTTP_REFERER']}");
+        exit();
+    }
+
+    public function blogsDelete($blogs_id)
+    {
+        $blogsDeleteModel = new nedminModel();
+        $_SESSION['messageManagement'] = $blogsDeleteModel->blogsDelete($blogs_id);
+        //bizi buraya yönlendiren sayfaya gitmek için kullandık.
+        header("Location:{$_SERVER['HTTP_REFERER']}");
+        exit();
+    }
+
+    public function blogsSortable()
+    {
+        $blogsSortableModel = new nedminModel();
+        $blogsSortableModel->blogsSortable();
+    }
+
+
+    //ABOUTS
+    public function abouts()
+    {
+        $data = [];
+        $aboutsModel = new nedminModel();
+        $data['abouts'] = $aboutsModel->abouts();
+        $this->callLayout("backend", "main", "nedmin", "abouts", $data);
+    }
+
+    public function aboutsInsertOp()
+    {
+        $aboutsInsertOpModel = new nedminModel();
+        $_SESSION['messageManagement'] = $aboutsInsertOpModel->aboutsInsertOp();
+        //bizi buraya yönlendiren sayfaya gitmek için kullandık.
+        header("Location:{$_SERVER['HTTP_REFERER']}");
+        exit();
+    }
+
+    public function aboutsUpdate($abouts_id)
+    {
+        $data = [];
+        $aboutsUpdateModel = new nedminModel();
+        $data['aboutsUpdate'] = $aboutsUpdateModel->aboutsUpdate($abouts_id);
+        $this->callLayout("backend", "main", "nedmin", "aboutsUpdate", $data);
+    }
+
+    public function aboutsUpdateOp()
+    {
+        $aboutsUpdateOpModel = new nedminModel();
+        $_SESSION['messageManagement'] = $aboutsUpdateOpModel->aboutsUpdateOp();
+        //bizi buraya yönlendiren sayfaya gitmek için kullandık.
+        header("Location:{$_SERVER['HTTP_REFERER']}");
+        exit();
+    }
+
+    public function aboutsDelete($abouts_id)
+    {
+        $aboutsDeleteModel = new nedminModel();
+        $_SESSION['messageManagement'] = $aboutsDeleteModel->aboutsDelete($abouts_id);
+        //bizi buraya yönlendiren sayfaya gitmek için kullandık.
+        header("Location:{$_SERVER['HTTP_REFERER']}");
+        exit();
+    }
+
+    public function aboutsSortable()
+    {
+        $aboutsSortableModel = new nedminModel();
+        $aboutsSortableModel->aboutsSortable();
     }
 
 }

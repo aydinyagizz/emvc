@@ -63,6 +63,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 
+    <!-- Özel CSS-->
+    <link rel="stylesheet" href="/css/custom.css">
+
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -114,14 +117,16 @@ desired effect
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="/images/admins/<?= $_SESSION['admins']['admins_file']; ?>" class="user-image" alt="User Image">
+                            <img src="/images/admins/<?= $_SESSION['admins']['admins_file']; ?>" class="user-image"
+                                 alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs"><?= $_SESSION['admins']['admins_namesurname']; ?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="/images/admins/<?= $_SESSION['admins']['admins_file']; ?>" class="img-circle" alt="User Image">
+                                <img src="/images/admins/<?= $_SESSION['admins']['admins_file']; ?>" class="img-circle"
+                                     alt="User Image">
 
                                 <p>
                                     <?= $_SESSION['admins']['admins_namesurname']; ?> - Yönetici
@@ -133,7 +138,8 @@ desired effect
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="/nedmin/admins/update/<?= $_SESSION['admins']['admins_id']; ?>" class="btn btn-default btn-flat">Profil Güncelle</a>
+                                    <a href="/nedmin/admins/update/<?= $_SESSION['admins']['admins_id']; ?>"
+                                       class="btn btn-default btn-flat">Profil Güncelle</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="/nedmin/logout" class="btn btn-default btn-flat">Güvenli Çıkış</a>
@@ -156,7 +162,8 @@ desired effect
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image ">
-                    <img class="smallImg" src="/images/admins/<?= $_SESSION['admins']['admins_file']; ?>" alt="User Image">
+                    <img class="smallImg" src="/images/admins/<?= $_SESSION['admins']['admins_file']; ?>"
+                         alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p><?= $_SESSION['admins']['admins_namesurname']; ?></p>
@@ -170,7 +177,13 @@ desired effect
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MENÜLER</li>
                 <!-- Optionally, you can add icons to the links -->
+
                 <li class="active"><a href="/nedmin"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+                <li class="active"><a href="/nedmin/abouts"><i class="fa fa-file"></i> <span>Kurumsal Sayfalar</span></a>
+                <li class="active"><a href="/nedmin/sliders"><i class="fa fa-file-image-o"></i> <span>Sliders</span></a>
+                <li class="active"><a href="/nedmin/blogs"><i class="fa fa-file"></i> <span>Blogs</span></a>
+
+                </li>
                 <li class="treeview active">
                     <a href="#"><i class="fa fa-tasks"></i> <span>Yönetim</span>
                         <span class="pull-right-container">
@@ -241,9 +254,9 @@ desired effect
 <script>
     $(document).ready(function () {
         <?php
-/*        if (isset($_SESSION['messageManagement'])): */?>
-        messageManagement(<?php /*echo $_SESSION['messageManagement']['status']; */?>, <?php /*echo $_SESSION['messageManagement']['error']; */?>);
-        <?php /*unset($_SESSION['messageManagement']); endif; */?>
+/*        if (isset($_SESSION['messageManagement'])): */ ?>
+        messageManagement(<?php /*echo $_SESSION['messageManagement']['status']; */ ?>, <?php /*echo $_SESSION['messageManagement']['error']; */ ?>);
+        <?php /*unset($_SESSION['messageManagement']); endif; */ ?>
     });
 
 </script>

@@ -1,6 +1,6 @@
 <div style="display: none" id="insertForm" class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Yönetici Ekle</h3>
+        <h3 class="box-title">Sayfa Ekle</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
@@ -10,60 +10,42 @@
             <!-- /.box-header -->
             <div class="box-body no-padding">
 
-                <form action="/nedmin/admins/insert/adminsInsertOp" method="post" enctype="multipart/form-data">
+                <form action="/nedmin/abouts/insert/aboutsInsertOp" method="post" enctype="multipart/form-data">
 
 
                     <div class="form-group">
-                        <label>Resim Seç</label>
+                        <label>Başlık</label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input class="form-control" required type="file" name="admins_file">
+                                <input class="form-control" type="text" name="abouts_title" required>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Ad Soyad</label>
+                        <label>Slug</label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" name="admins_namesurname" required>
+                                <input class="form-control" type="text" name="abouts_slug">
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Kullanıcı Adı</label>
+                        <label>Sayfa İçerik</label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" name="admins_username" required>
+                                <textarea name="abouts_content" id="editor1"></textarea>
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>Kullanıcı Şifre</label>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="password" name="admins_pass">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Kullanıcı Durum</label>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <select class="form-control" name="admins_status">
-                                    <option value="1">Aktif</option>
-                                    <option value="0">Pasif</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
+                    <script>
+                        CKEDITOR.replace('editor1');
+                    </script>
 
                     <div align="right" class="box-footer">
-                        <button type="submit" class="btn btn-success" name="admins_insert">Ekle</button>
+                        <button type="submit" class="btn btn-success" name="abouts_insert">Ekle</button>
                     </div>
 
                 </form>
@@ -83,9 +65,9 @@
 
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Yöneticiler</h3>
+        <h3 class="box-title">Blog</h3>
         <div align="right">
-            <button id="insertFormShow" class="btn btn-success">Yönetici Ekle</button>
+            <button id="insertFormShow" class="btn btn-success">Sayfa Ekle</button>
         </div>
     </div>
     <!-- /.box-header -->
@@ -99,8 +81,7 @@
 
                     <thead>
                     <tr>
-                        <th>Ad Soyad</th>
-                        <th>Kullanıcı Adı</th>
+                        <th>Sayfa Başlığı</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -108,16 +89,15 @@
 
                     <tbody id="sortable">
                         <?php
-                        foreach ($data['admins'] as $admins) :
+                        foreach ($data['abouts'] as $abouts) :
                             ?>
 
-                            <tr id="item-<?= $admins['admins_id'] ?>">
-                                <td class="sortable"><i style="margin-right: 7px;" class="fa fa-exchange"></i><?=$admins['admins_namesurname']; ?></td>
-                                <td><?= $admins['admins_username']; ?></td>
-                                <td width="10"><a href="/nedmin/admins/update/<?= $admins['admins_id']; ?>"
+                            <tr id="item-<?= $abouts['abouts_id'] ?>">
+                                <td class="sortable"><i style="margin-right: 7px;" class="fa fa-exchange"></i><?=$abouts['abouts_title']; ?></td>
+                                <td width="10"><a href="/nedmin/abouts/update/<?= $abouts['abouts_id']; ?>"
                                                   title="düzenle"><i
                                                 class="fa fa-pencil-square-o"></i></a></td>
-                                <td width="10"><a href="/nedmin/admins/delete/<?= $admins['admins_id']; ?>" title="sil" onclick="return confirm('<?= $admins['admins_namesurname']; ?>'+' kişisini silmek istiyor musunuz?');"><i class="fa fa-trash-o"></i></a></td>
+                                <td width="10"><a href="/nedmin/abouts/delete/<?= $abouts['abouts_id']; ?>" title="sil" onclick="return confirm('<?= $abouts['abouts_title']; ?>'+' \'i silmek istiyor musunuz?');"><i class="fa fa-trash-o"></i></a></td>
 
                             </tr>
                         <?php endforeach; ?>
@@ -147,7 +127,7 @@
                 $.ajax({
                     type: "POST",
                     data: data,
-                    url: "/nedmin/admins",
+                    url: "/nedmin/abouts",
                     success: function (msg) {
                         if (msg) {
                             alertify.success("İşlem Başarılı.");

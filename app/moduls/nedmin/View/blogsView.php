@@ -1,6 +1,6 @@
 <div style="display: none" id="insertForm" class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Yönetici Ekle</h3>
+        <h3 class="box-title">Blog Ekle</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
@@ -10,60 +10,51 @@
             <!-- /.box-header -->
             <div class="box-body no-padding">
 
-                <form action="/nedmin/admins/insert/adminsInsertOp" method="post" enctype="multipart/form-data">
+                <form action="/nedmin/blogs/insert/blogsInsertOp" method="post" enctype="multipart/form-data">
 
 
                     <div class="form-group">
                         <label>Resim Seç</label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input class="form-control" required type="file" name="admins_file">
+                                <input class="form-control" required type="file" name="blogs_file">
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Ad Soyad</label>
+                        <label>Başlık</label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" name="admins_namesurname" required>
+                                <input class="form-control" type="text" name="blogs_title" required>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Kullanıcı Adı</label>
+                        <label>Slug</label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" name="admins_username" required>
+                                <input class="form-control" type="text" name="blogs_slug">
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Kullanıcı Şifre</label>
+                        <label>Blog İçerik</label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input class="form-control" type="password" name="admins_pass">
+                                <textarea name="blogs_content" id="editor1"></textarea>
                             </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>Kullanıcı Durum</label>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <select class="form-control" name="admins_status">
-                                    <option value="1">Aktif</option>
-                                    <option value="0">Pasif</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
+                    <script>
+                        CKEDITOR.replace('editor1');
+                    </script>
 
                     <div align="right" class="box-footer">
-                        <button type="submit" class="btn btn-success" name="admins_insert">Ekle</button>
+                        <button type="submit" class="btn btn-success" name="blogs_insert">Ekle</button>
                     </div>
 
                 </form>
@@ -83,9 +74,9 @@
 
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Yöneticiler</h3>
+        <h3 class="box-title">Blog</h3>
         <div align="right">
-            <button id="insertFormShow" class="btn btn-success">Yönetici Ekle</button>
+            <button id="insertFormShow" class="btn btn-success">Blog Ekle</button>
         </div>
     </div>
     <!-- /.box-header -->
@@ -99,8 +90,7 @@
 
                     <thead>
                     <tr>
-                        <th>Ad Soyad</th>
-                        <th>Kullanıcı Adı</th>
+                        <th>Blog Başlığı</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -108,16 +98,15 @@
 
                     <tbody id="sortable">
                         <?php
-                        foreach ($data['admins'] as $admins) :
+                        foreach ($data['blogs'] as $blogs) :
                             ?>
 
-                            <tr id="item-<?= $admins['admins_id'] ?>">
-                                <td class="sortable"><i style="margin-right: 7px;" class="fa fa-exchange"></i><?=$admins['admins_namesurname']; ?></td>
-                                <td><?= $admins['admins_username']; ?></td>
-                                <td width="10"><a href="/nedmin/admins/update/<?= $admins['admins_id']; ?>"
+                            <tr id="item-<?= $blogs['blogs_id'] ?>">
+                                <td class="sortable"><i style="margin-right: 7px;" class="fa fa-exchange"></i><?=$blogs['blogs_title']; ?></td>
+                                <td width="10"><a href="/nedmin/blogs/update/<?= $blogs['blogs_id']; ?>"
                                                   title="düzenle"><i
                                                 class="fa fa-pencil-square-o"></i></a></td>
-                                <td width="10"><a href="/nedmin/admins/delete/<?= $admins['admins_id']; ?>" title="sil" onclick="return confirm('<?= $admins['admins_namesurname']; ?>'+' kişisini silmek istiyor musunuz?');"><i class="fa fa-trash-o"></i></a></td>
+                                <td width="10"><a href="/nedmin/blogs/delete/<?= $blogs['blogs_id']; ?>" title="sil" onclick="return confirm('<?= $blogs['blogs_title']; ?>'+' \'i silmek istiyor musunuz?');"><i class="fa fa-trash-o"></i></a></td>
 
                             </tr>
                         <?php endforeach; ?>
@@ -147,7 +136,7 @@
                 $.ajax({
                     type: "POST",
                     data: data,
-                    url: "/nedmin/admins",
+                    url: "/nedmin/blogs",
                     success: function (msg) {
                         if (msg) {
                             alertify.success("İşlem Başarılı.");
