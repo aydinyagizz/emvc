@@ -534,16 +534,14 @@ class CrudPDO
     public function slugRead($table)
     {
 
-
         try {
-
 
             $stmt = $this->db->prepare("SELECT * FROM $table order by $table" . "_must" . " ASC");
             $stmt->execute();
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             echo $row[$table . "_slug"];
 
-            return ['status' => TRUE];
+            //return ['status' => TRUE];
 
         } catch (PDOException $e) {
             echo $e->getMessage();

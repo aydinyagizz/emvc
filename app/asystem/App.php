@@ -20,12 +20,12 @@ class App
     //static olarak tanımladığımızda ram bellek üzerinde tutulur ve hızlı erişim imkanı sunar. Metotlara direkt olarak erişebilmemizi sağlar.
     //auth; parametresi session ile güvenlik kontrolü için.
     //area; o güvenli sayfanın fronted de mi backend de mi olduğunu sağlayacak.
-    public static function getAction($link, $path, $auth = false, $area = null)
+    public static function getAction($link, $path, $auth = false, $area = "frontend")
     {
         self::$routes[] = ['GET', $link, $path, $auth, $area];
     }
 
-    public static function postAction($link, $path, $auth = false, $area = null)
+    public static function postAction($link, $path, $auth = false, $area = "frontend")
     {
         self::$routes[] = ['POST', $link, $path, $auth, $area];
     }

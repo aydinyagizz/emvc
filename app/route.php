@@ -58,3 +58,13 @@ App::postAction('/nedmin/abouts', '/nedmin/aboutsSortable', true, "backend");
 
 
 
+
+//frontend routeleri
+
+//BLOGS
+App::getAction("/blog", "/blog/index");
+App::getAction("/blog/([0-9a-zA-Z-_]+)", "/blog/detail/([0-9a-zA-Z-_]+)");
+
+//ABOUTS
+App::getAction("/page/([0-9a-zA-Z-_]+)", "/abouts/index/([0-9a-zA-Z-_]+)");
+

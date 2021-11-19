@@ -1,1 +1,2 @@
 CrudPDO.php de 219. satırda uzantı olarak yanlış verilmiş olabilir. imageUpload fonksiyonunda.
+App.php de area null'du. area'yı frontend olarak değiştirdik.

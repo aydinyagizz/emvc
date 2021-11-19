@@ -48,6 +48,7 @@ class nedminModel extends mainModel
 
     public function settingsUpdateOp()
     {
+
         $sql = $this->db->update("settings", $_POST,
             [
                 "form_name" => "settings_update",
@@ -142,6 +143,7 @@ class nedminModel extends mainModel
         return $sql;
     }
 
+    
     public function slidersDelete($sliders_id)
     {
         $sql = $this->db->delete("sliders", "sliders_id", $sliders_id);
